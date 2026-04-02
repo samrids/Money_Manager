@@ -1,0 +1,137 @@
+/* ─── Alpine.js cloak ───────────────────────────────────────────── */
+[x-cloak] { display: none !important; }
+
+/* ─── Safe area (iPhone home indicator) ─────────────────────────── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Bottom Nav ─────────────────────────────────────────────────── */
+.nav-tab {
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s ease;
+}
+.fab-btn {
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* ─── Bottom Sheet ───────────────────────────────────────────────── */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 45;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.sheet {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  border-radius: 1.25rem 1.25rem 0 0;
+  z-index: 50;
+  max-height: 92vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.sheet-handle {
+  width: 2.5rem;
+  height: 0.25rem;
+  background: #d1d5db;
+  border-radius: 9999px;
+  margin: 0.75rem auto 0;
+}
+
+/* ─── Animations ─────────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { transform: translateX(-50%) translateY(100%); }
+  to   { transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-1rem); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ─── Transaction Type Chips ─────────────────────────────────────── */
+.type-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.type-chip-income  { background: #dcfce7; color: #16a34a; }
+.type-chip-expense { background: #fee2e2; color: #dc2626; }
+.type-chip-transfer{ background: #e0e7ff; color: #4f46e5; }
+
+.type-chip.active-income  { border-color: #16a34a; }
+.type-chip.active-expense { border-color: #dc2626; }
+.type-chip.active-transfer{ border-color: #4f46e5; }
+
+/* ─── Amount Input ───────────────────────────────────────────────── */
+.amount-input {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: right;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  color: inherit;
+}
+
+/* ─── Filter Chips (horizontal scroll) ──────────────────────────── */
+.filter-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.filter-scroll::-webkit-scrollbar { display: none; }
+
+/* ─── Card hover ─────────────────────────────────────────────────── */
+.tx-card {
+  transition: background 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.tx-card:active { background-color: #f3f4f6; }
+
+/* ─── Progress bar color overrides ──────────────────────────────── */
+.progress-warning::-webkit-progress-value { background-color: #f59e0b; }
+.progress-warning::-moz-progress-bar      { background-color: #f59e0b; }
+.progress-danger::-webkit-progress-value  { background-color: #ef4444; }
+.progress-danger::-moz-progress-bar       { background-color: #ef4444; }
+
+/* ─── Prevent iOS input zoom (font-size ต้อง >= 16px) ────────────── */
+input, select, textarea {
+  font-size: 16px !important;
+}

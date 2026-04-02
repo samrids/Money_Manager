@@ -1,0 +1,4 @@
+database/money_manager.db
+.DS_Store
+node_modules/
+*.log
